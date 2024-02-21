@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Controllers\Controller;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class PostController extends Controller
 {
@@ -17,7 +18,8 @@ class PostController extends Controller
      */
     public function index()
     {
-       
+       $post = Post::all();
+       return view('Dashboard',compact('posts'));
     }
 
     /**
