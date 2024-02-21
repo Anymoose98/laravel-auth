@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -26,8 +27,10 @@ route::middleware(['auth', 'verified'])
     ->name('admin.')
     ->prefix('admin')
     ->group(function(){
-    // Rotta dopo aver fatto il login
+    // Rotta dopo aver fatto il login (ricorda di lasciare il get('/vuoto'))
     route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    route::resource('/posts',PostController::class);
     });
 
 Route::middleware('auth')->group(function () {
