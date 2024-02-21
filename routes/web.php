@@ -27,7 +27,7 @@ route::middleware(['auth', 'verified'])
     ->prefix('admin')
     ->group(function(){
     // Rotta dopo aver fatto il login
-    route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     });
 
 Route::middleware('auth')->group(function () {
