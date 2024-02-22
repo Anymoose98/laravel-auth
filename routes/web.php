@@ -29,7 +29,9 @@ route::middleware(['auth', 'verified'])
     ->group(function(){
     
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/dettaglio_post', [PostController::class, 'index'])->name('dettaglio_post.index');
+
+    Route::resource('posts', PostController::class);
+
     });
 
 Route::middleware('auth')->group(function () {

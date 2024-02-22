@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('dettaglio_post', compact('posts'));
+        return view('posts', compact('posts'));
     }
 
     /**
@@ -51,10 +51,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-            // findOrFail se non trova il file dà errore invece che null
-               // findOrFail se non trova il file dà errore invece che null
-               $posts = Post::all();
-               return view('Dashboard', compact('posts'));
+        // Trova il post corrispondente all'ID fornito
+        $post = Post::findOrFail($id);
+        // Passa il post alla vista
+        return view('posts', compact('post'));
     }
 
     /**

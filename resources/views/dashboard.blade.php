@@ -14,7 +14,7 @@
                     
                     
                         {{ session('status') }}
-                        <a href="{{ route('admin.dettaglio_post.index') }}">Per vedere tutti post clicca qui</a>
+                        <a href="{{ route('admin.posts.index') }}">Per vedere tutti post clicca qui</a>
                 </div>
             </div>
         </div>
