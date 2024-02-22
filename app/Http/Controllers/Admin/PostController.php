@@ -88,6 +88,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        // Trova il post corrispondente all'istanza fornita
+        $post->delete();
+        
+        // Reindirizza alla pagina di visualizzazione dei post o a qualsiasi altra pagina necessaria dopo l'eliminazione
+        return redirect()->route('admin.posts.index')->with('success', 'Il post è stato eliminato con successo.');
     }
 }

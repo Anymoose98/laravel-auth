@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" id="container-dettagli">
     <div class="row">
         <div class="col-6">
             <img src="{{$post['img']}}" alt="{{$post['title']}}">
