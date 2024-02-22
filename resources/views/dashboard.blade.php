@@ -14,22 +14,7 @@
                     
                     
                         {{ session('status') }}
-                         @foreach ($posts as $post)
-                            <div class="col-4 my-2">
-                                <div class="card" style="width: 18rem;">
-                                    <img src="{{ $post->img }}" class="card-img-top" alt="{{ $post->title }}">
-                                    <div class="card-body">
-                                        <h4>{{ $post->title }}</h4>
-                                      <p class="card-text">{{ $post->description }}</p>
-                                    </div>
-                                  </div>                
-                            </div>
-                         @endforeach
-
-                   
-                  
-
-                    
+                        <a href="{{ route('admin.dettaglio_post.index') }}">Per vedere tutti post clicca qui</a>
                 </div>
             </div>
         </div>

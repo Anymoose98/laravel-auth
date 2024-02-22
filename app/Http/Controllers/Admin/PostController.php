@@ -18,8 +18,8 @@ class PostController extends Controller
      */
     public function index()
     {
-       $post = Post::all();
-       return view('Dashboard',compact('posts'));
+        $posts = Post::all();
+        return view('dettaglio_post', compact('posts'));
     }
 
     /**
@@ -49,9 +49,12 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        //
+            // findOrFail se non trova il file dà errore invece che null
+               // findOrFail se non trova il file dà errore invece che null
+               $posts = Post::all();
+               return view('Dashboard', compact('posts'));
     }
 
     /**

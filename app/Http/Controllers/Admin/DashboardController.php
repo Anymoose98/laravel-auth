@@ -9,7 +9,14 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
-        return view('Dashboard', compact('posts'));
+             return view('dashboard');
     }
+
+    public function show()
+    {
+        // findOrFail se non trova il file dà errore invece che null
+        // $comic = Post::findOrFail($id); 
+        // return view('dettaglio_post', compact('posts'));
+    }
+
 }

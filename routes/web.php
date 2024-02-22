@@ -27,13 +27,13 @@ route::middleware(['auth', 'verified'])
     ->name('admin.')
     ->prefix('admin')
     ->group(function(){
-    // Rotta dopo aver fatto il login (ricorda di lasciare il get('/vuoto'))
-    route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-
-    route::resource('/posts',PostController::class);
+    
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dettaglio_post', [PostController::class, 'index'])->name('dettaglio_post.index');
     });
 
 Route::middleware('auth')->group(function () {
+    
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
