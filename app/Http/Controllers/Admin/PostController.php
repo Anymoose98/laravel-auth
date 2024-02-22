@@ -54,7 +54,7 @@ class PostController extends Controller
         // Trova il post corrispondente all'ID fornito
         $post = Post::findOrFail($id);
         // Passa il post alla vista
-        return view('posts', compact('post'));
+        return view('post_dettagli', compact('post'));
     }
 
     /**

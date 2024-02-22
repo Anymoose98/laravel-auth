@@ -19,7 +19,7 @@
                         <th>{{$post->id}}</th>
                         <td>{{$post->title}}</td>
                         <td>{{$post->slug}}</td>
-                        <td><a href="">Clicca qui per maggiori informazioni</a></td>
+                        <td><a href="{{ route('admin.posts.show', ['post' => $post->id]) }}">Clicca qui per maggiori informazioni</a></td>
                         <td>
                             <button class="btn btn-warning">Modifica</button>
                             <button class="btn btn-danger">Elimina</button>
