@@ -23,7 +23,7 @@
                         <td>
                             <div class="d-flex">
                                 <button class="btn btn-warning mx-2">Modifica</button>
-                                <form action="{{ route('admin.posts.destroy', ['post' => $post->id]) }}" method="POST">
+                                <form action="{{ route('admin.posts.destroy', ['post' => $post->id]) }}" method="POST" onsubmit="return confirm('Vuoi elliminare il file?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Elimina</button>
