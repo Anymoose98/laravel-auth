@@ -32,7 +32,7 @@ class StorePostRequest extends FormRequest
     {
         return [
             'title.required' => 'Il titolo è obbligatorio',
-            'title.max' => 'Il titolo può essere di massimo 20 caratteri',
+            'title.max:20' => 'Il titolo può essere di massimo 20 caratteri',
             'description.required' => 'Un minimo di descrizione è obbligatoria'
         ];
     }

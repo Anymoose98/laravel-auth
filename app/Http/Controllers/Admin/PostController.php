@@ -40,7 +40,17 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        // Recupero i dati
+        $form_data = $request->all();
+
+        // salvo i dati
+        $post = new Post();
+        $post->title = $form_data['title'];
+        $post->slug = $form_data['slug'];
+        $post->description = $form_data['description'];
+        $post->save();
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -63,9 +73,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('edit', compact('post'));
     }
 
     /**
@@ -75,9 +86,18 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePostRequest $request, Post $post)
+    public function update(UpdatePostRequest $request, $id)
     {
-        //
+        $form_data= $request->all();
+        $post = Post::find($id);
+
+        $post->title = $form_data['title'];
+        $post->slug = $form_data['slug'];
+        $post->description = $form_data['description'];
+        $post->update();
+
+        return redirect()->route('admin.posts.index');
+
     }
 
     /**

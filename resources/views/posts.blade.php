@@ -30,7 +30,10 @@
                         <td><a href="{{ route('admin.posts.show', ['post' => $post->id]) }}">Clicca qui per maggiori informazioni</a></td>
                         <td>
                             <div class="d-flex">
-                                <button class="btn btn-warning mx-2">Modifica</button>
+                                <a href="{{route('admin.posts.edit',['post' => $post->id])}}">
+                                    <button class="btn btn-warning mx-2">Modifica</button>
+                                </a>
+                                
                                 <form action="{{ route('admin.posts.destroy', ['post' => $post->id]) }}" method="POST" onsubmit="return confirm('Vuoi elliminare il file?')">
                                     @csrf
                                     @method('DELETE')
