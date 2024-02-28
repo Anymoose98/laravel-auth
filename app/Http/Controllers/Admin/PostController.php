@@ -49,8 +49,8 @@ class PostController extends Controller
         $post->title = $form_data['title'];
 
         if($request->hasFile('img')){
-            $path = Storage::disk('public')->put('img', $form_data['img']);
-            $form_data['img'] = $path;
+            $path = Storage::disk('public')->put('img', $request->file('img'));
+            $post->img = $path;
         }
 
         $post->slug = $form_data['slug'];
@@ -100,12 +100,15 @@ class PostController extends Controller
 
         $post->title = $form_data['title'];
 
-        if($request->hasFile('img')){
-            if($post->img != null){
+        if ($request->hasFile('img')) {
+            // Se c'è già un'immagine, cancellala prima di aggiungere la nuova
+            if ($post->img != null) {
                 Storage::disk('public')->delete($post->img);
             }
-
-            $path = Storage::disk('public')->put('img', $form_data['img']);
+    
+            // Aggiorna il percorso dell'immagine nel database
+            $path = Storage::disk('public')->put('img', $request->file('img'));
+            $post->img = $path;
         }
         $post->slug = $form_data['slug'];
         $post->description = $form_data['description'];

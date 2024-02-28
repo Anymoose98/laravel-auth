@@ -20,7 +20,7 @@
                     <div class="col-6">
                         @if ($post->img != null)
                             <div class="my-3">
-                                <img src="{{ asset(`/storage/` . $post->img) }}" alt="{{ $post->title }}" width="200">
+                                <img src="{{ asset('/storage/' . $post->img) }}" alt="{{$post['title']}}" width="300px">
                             @else <h3>Immagine non inserita</h3>
                             </div>
                                                  
