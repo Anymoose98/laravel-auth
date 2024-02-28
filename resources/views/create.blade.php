@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form action="{{ route('admin.posts.store') }}" method="POST">
+                <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="col-6">
                         <div class="form-group mt-5">
@@ -12,6 +12,14 @@
                             <input type="text" name="title" class="form-control" placeholder="Inserisci il titolo" required>
                         </div>
                     </div>
+
+                    <div class="col-6">
+                        <div class="form-group mt-3">
+                            <label for="img" class="">Inserisci immagine di copertina</label>
+                            <input type="file" name="img" class="form-control" required>
+                        </div>
+                    </div>
+
                     <div class="form-group mt-3">
                         <label for="slug" class="">Inserisci uno slug personale</label>
                         <input type="text" name="slug" class="form-control" placeholder="Inserisci uno slug personale" required>

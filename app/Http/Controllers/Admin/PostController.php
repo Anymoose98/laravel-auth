@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class PostController extends Controller
@@ -46,6 +47,12 @@ class PostController extends Controller
         // salvo i dati
         $post = new Post();
         $post->title = $form_data['title'];
+
+        if($request->hasFile('img')){
+            $path = Storage::disk('public')->put('img', $form_data['img']);
+            $form_data['img'] = $path;
+        }
+
         $post->slug = $form_data['slug'];
         $post->description = $form_data['description'];
         $post->save();
@@ -92,8 +99,17 @@ class PostController extends Controller
         $post = Post::find($id);
 
         $post->title = $form_data['title'];
+
+        if($request->hasFile('img')){
+            if($post->img != null){
+                Storage::disk('public')->delete($post->img);
+            }
+
+            $path = Storage::disk('public')->put('img', $form_data['img']);
+        }
         $post->slug = $form_data['slug'];
         $post->description = $form_data['description'];
+
         $post->update();
 
         return redirect()->route('admin.posts.index');

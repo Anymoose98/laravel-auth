@@ -4,7 +4,10 @@
 <div class="container" id="container-dettagli">
     <div class="row">
         <div class="col-6">
-            <img src="{{$post['img']}}" alt="{{$post['title']}}">
+            @if ($post->img != null)
+            <img src="{{ asset (`/storage/` . $post['img']) }}" alt="{{$post['title']}}">
+            @else <h3>Immagine non inserita</h3>
+            @endif
         </div>
         <div class="col-6">
             <h1>{{$post['title']}}</h1>
